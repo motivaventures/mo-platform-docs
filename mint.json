@@ -70,8 +70,161 @@
     {
       "group": "REST API Reference",
       "pages": [
-        "api-reference/rest/vehicles/telemetry/get-telemetry",
-        "api-reference/rest/subscriptions/pickup/post-pickup"
+        {
+          "group": "Activities",
+          "pages": ["api-reference/rest/activities/get-activities"]
+        },
+        {
+          "group": "Agreements",
+          "pages": [
+            "api-reference/rest/agreements/get-agreement",
+            "api-reference/rest/agreements/post-agreement"
+          ]
+        },
+        {
+          "group": "Auth",
+          "pages": [
+            "api-reference/rest/auth/get-current-auth",
+            "api-reference/rest/auth/post-auth",
+            "api-reference/rest/auth/delete-auth",
+            "api-reference/rest/auth/post-auth-passwords",
+            "api-reference/rest/auth/put-auth-passwords"
+          ]
+        },
+        {
+          "group": "Bills",
+          "pages": [
+            "api-reference/rest/bills/list-bills",
+            "api-reference/rest/bills/post-bills",
+            "api-reference/rest/bills/get-bill",
+            "api-reference/rest/bills/put-bill",
+            "api-reference/rest/bills/post-bill-payment",
+            "api-reference/rest/bills/get-bill-counts"
+          ]
+        },
+        {
+          "group": "Dealers",
+          "pages": [
+            "api-reference/rest/dealers/list-dealers",
+            "api-reference/rest/dealers/post-dealers",
+            "api-reference/rest/dealers/get-dealer",
+            "api-reference/rest/dealers/put-dealer",
+            "api-reference/rest/dealers/delete-dealer"
+          ]
+        },
+        {
+          "group": "Disputes",
+          "pages": [
+            "api-reference/rest/disputes/list-disputes",
+            "api-reference/rest/disputes/get-dispute"
+          ]
+        },
+        {
+          "group": "Documents",
+          "pages": [
+            "api-reference/rest/documents/list-documents",
+            "api-reference/rest/documents/post-documents",
+            "api-reference/rest/documents/delete-document"
+          ]
+        },
+        {
+          "group": "Fees",
+          "pages": [
+            "api-reference/rest/fees/list-fees",
+            "api-reference/rest/fees/post-fees",
+            "api-reference/rest/fees/get-fee",
+            "api-reference/rest/fees/put-fee",
+            "api-reference/rest/fees/delete-fee"
+          ]
+        },
+        {
+          "group": "Images",
+          "pages": [
+            "api-reference/rest/images/list-images",
+            "api-reference/rest/images/post-images",
+            "api-reference/rest/images/put-image",
+            "api-reference/rest/images/delete-image"
+          ]
+        },
+        {
+          "group": "Locations",
+          "pages": [
+            "api-reference/rest/locations/list-locations",
+            "api-reference/rest/locations/post-locations",
+            "api-reference/rest/locations/get-location",
+            "api-reference/rest/locations/put-location",
+            "api-reference/rest/locations/delete-location",
+            "api-reference/rest/locations/get-location-agreement"
+          ]
+        },
+        {
+          "group": "Notes",
+          "pages": [
+            "api-reference/rest/notes/post-notes",
+            "api-reference/rest/notes/delete-note"
+          ]
+        },
+        {
+          "group": "Search",
+          "pages": ["api-reference/rest/search/search"]
+        },
+        {
+          "group": "Subscribers",
+          "pages": [
+            "api-reference/rest/subscribers/list-subscribers",
+            "api-reference/rest/subscribers/export-subscribers",
+            "api-reference/rest/subscribers/get-subscriber",
+            "api-reference/rest/subscribers/put-subscriber",
+            "api-reference/rest/subscribers/delete-subscriber"
+          ]
+        },
+        {
+          "group": "Subscriptions",
+          "pages": [
+            "api-reference/rest/subscriptions/list-subscriptions",
+            "api-reference/rest/subscriptions/get-subscriptions-counts",
+            "api-reference/rest/subscriptions/get-subscription",
+            "api-reference/rest/subscriptions/put-subscription",
+            "api-reference/rest/subscriptions/delete-subscription",
+            "api-reference/rest/subscriptions/post-subscription-return",
+            "api-reference/rest/subscriptions/post-subscription-pickup",
+            "api-reference/rest/subscriptions/get-subscription-return-fees",
+            "api-reference/rest/subscriptions/put-subscription-recover",
+            "api-reference/rest/subscriptions/post-subscription-recover",
+            "api-reference/rest/subscriptions/delete-subscription-recover",
+            "api-reference/rest/subscriptions/post-subscription-renew",
+            "api-reference/rest/subscriptions/post-subscription-swap",
+            "api-reference/rest/subscriptions/delete-subscription-swap"
+          ]
+        },
+        {
+          "group": "Taxes",
+          "pages": ["api-reference/rest/taxes/post-taxes"]
+        },
+        {
+          "group": "Transactions",
+          "pages": ["api-reference/rest/transactions/post-transactions-refund"]
+        },
+        {
+          "group": "Users",
+          "pages": ["api-reference/rest/users/list-users"]
+        },
+        {
+          "group": "Vehicles",
+          "pages": [
+            "api-reference/rest/vehicles/list-vehicles",
+            "api-reference/rest/vehicles/post-vehicles",
+            "api-reference/rest/vehicles/get-vehicle-counts",
+            "api-reference/rest/vehicles/export-vehicles",
+            "api-reference/rest/vehicles/get-vehicle",
+            "api-reference/rest/vehicles/put-vehicle",
+            "api-reference/rest/vehicles/get-vehicle-telemetry"
+          ]
+        },
+        {
+          "group": "VIN Decode",
+          "pages": ["api-reference/rest/vin-decode/post-vin-decode"]
+        }
       ]
     }
   ],
