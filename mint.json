@@ -1,65 +1,81 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Documentation Starter Kit",
+  "name": "Motiva Platform",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0069ED",
+    "primary": "#3f3f46",
     "light": "#4D9CFF",
     "dark": "#0050B4"
   },
-  "topbarLinks": [
-    {
-      "name": "Documentation",
-      "url": "https://mintlify.com/docs"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://github.com/mintlify/starter"
-  },
   "anchors": [
     {
-      "name": "API Reference",
-      "icon": "rectangle-terminal",
-      "url": "api-reference"
-    },
-    {
-      "name": "Changelog",
-      "icon": "list",
-      "url": "https://mintlify.com"
-    },
-    {
-      "name": "Community",
-      "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "name": "Motiva Ventures",
+      "icon": "city",
+      "url": "https://www.motivaventures.com"
     }
   ],
+  "api": {
+    "baseUrl": "https://api.staging.launchmotiva.io",
+    "auth": {
+      "name": "X-API-KEY",
+      "method": "key"
+    }
+  },
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction", "features"]
+      "pages": ["introduction"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
+      "group": "GraphQL Reference",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        {
+          "group": "Objects",
+          "pages": [
+            "api-reference/graph/objects/address",
+            "api-reference/graph/objects/app",
+            "api-reference/graph/objects/bill",
+            "api-reference/graph/objects/dealer",
+            "api-reference/graph/objects/document",
+            "api-reference/graph/objects/drivers-license",
+            "api-reference/graph/objects/insurance",
+            "api-reference/graph/objects/location",
+            "api-reference/graph/objects/price",
+            "api-reference/graph/objects/price-class",
+            "api-reference/graph/objects/rental-agreement",
+            "api-reference/graph/objects/subscriber",
+            "api-reference/graph/objects/subscription-estimate",
+            "api-reference/graph/objects/subscription-product",
+            "api-reference/graph/objects/tax",
+            "api-reference/graph/objects/tax-config",
+            "api-reference/graph/objects/templatable-product",
+            "api-reference/graph/objects/template-product",
+            "api-reference/graph/objects/term",
+            "api-reference/graph/objects/transaction",
+            "api-reference/graph/objects/user",
+            "api-reference/graph/objects/user-role",
+            "api-reference/graph/objects/user-roles",
+            "api-reference/graph/objects/variable-fee",
+            "api-reference/graph/objects/vehicle",
+            "api-reference/graph/objects/vehicle-pricing",
+            "api-reference/graph/objects/vehicle-subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "REST API Reference",
+      "pages": [
+        "api-reference/rest/vehicles/telemetry/get-telemetry",
+        "api-reference/rest/subscriptions/pickup/post-pickup"
       ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "linkedin": "https://www.linkedin.com/company/motivaventures"
   }
 }

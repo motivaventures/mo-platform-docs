@@ -1,0 +1,2136 @@
+openapi: 3.0.1
+info:
+  title: API documentation
+  version: 0.0.1
+servers:
+- url: http://localhost:3000/
+tags: []
+paths:
+  /portal/activities:
+    get:
+      tags:
+      - portal
+      operationId: getPortalActivities
+      parameters:
+      - name: page
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 25
+      - name: resourceId
+        in: query
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/bills:
+    get:
+      tags:
+      - portal
+      operationId: getPortalBills
+      parameters:
+      - name: page
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          maximum: 100
+          minimum: 0
+          type: integer
+          default: 25
+      - name: locationId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: subscriptionId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: subscriberId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: appId
+        in: query
+        schema:
+          type: string
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: status
+        in: query
+        schema:
+          type: string
+          x-convert:
+            case: lower
+        x-convert:
+          case: lower
+      - name: createdAt
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          default: createdAt
+      - name: sortDir
+        in: query
+        schema:
+          type: string
+          default: desc
+          enum:
+          - asc
+          - desc
+          x-convert:
+            case: lower
+        x-convert:
+          case: lower
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalBills
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/dealers:
+    get:
+      tags:
+      - portal
+      operationId: getPortalDealers
+      parameters:
+      - name: appId
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 25
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalDealers
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model1'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+  /portal/disputes:
+    get:
+      tags:
+      - portal
+      operationId: getPortalDisputes
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/documents:
+    get:
+      tags:
+      - portal
+      operationId: getPortalDocuments
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalDocuments
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/fees:
+    get:
+      tags:
+      - portal
+      operationId: getPortalFees
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalFees
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/images:
+    get:
+      tags:
+      - portal
+      operationId: getPortalImages
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalImages
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/locations:
+    get:
+      tags:
+      - portal
+      operationId: getPortalLocations
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalLocations
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/search:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSearch
+      parameters:
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: pageSize
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 5
+      - name: term
+        in: query
+        required: true
+        schema:
+          maxLength: 255
+          type: string
+          x-convert:
+            trim: true
+        x-convert:
+          trim: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscribers:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscribers
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscriptions
+      parameters:
+      - name: page
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          maximum: 1000
+          minimum: 0
+          type: integer
+          default: 25
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          default: start
+          enum:
+          - start
+          - end
+          - duration
+          - status
+      - name: sortDir
+        in: query
+        schema:
+          type: string
+          default: desc
+          enum:
+          - asc
+          - desc
+          x-convert:
+            case: lower
+        x-convert:
+          case: lower
+      - name: overdue
+        in: query
+        schema:
+          type: boolean
+      - name: locationId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: appId
+        in: query
+        schema:
+          type: string
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: subscriberId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: vehicleId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        schema:
+          type: string
+      - name: rangeKey
+        in: query
+        schema:
+          type: string
+          enum:
+          - pickup.date
+          - return.date
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/users:
+    get:
+      tags:
+      - portal
+      operationId: getPortalUsers
+      parameters:
+      - name: page
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 25
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          default: firstName
+          enum:
+          - createdAt
+          - updatedAt
+          - firstName
+          - lastName
+          - email
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: appId
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/vehicles:
+    get:
+      tags:
+      - portal
+      operationId: getPortalVehicles
+      parameters:
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - odometer
+      - name: sortDir
+        in: query
+        schema:
+          type: string
+          default: asc
+          enum:
+          - asc
+          - desc
+      - name: page
+        in: query
+        schema:
+          minimum: 1
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          maximum: 10000
+          minimum: 0
+          type: integer
+          default: 25
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+      - name: locationId
+        in: query
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: appId
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalVehicles
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/agreements/{agreementId}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalAgreementsAgreementid
+      parameters:
+      - name: agreementId
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/auth/current:
+    get:
+      tags:
+      - portal
+      operationId: getPortalAuthCurrent
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/bills/counts:
+    get:
+      tags:
+      - portal
+      operationId: getPortalBillsCounts
+      parameters:
+      - name: primaryGroup
+        in: query
+        schema:
+          type: string
+          default: status
+          enum:
+          - status
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+      - name: appId
+        in: query
+        schema:
+          type: string
+      - name: createdAt
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/bills/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalBillsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalBillsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model18'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+  /portal/config/{configType}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalConfigConfigtype
+      parameters:
+      - name: configType
+        in: path
+        required: true
+        schema:
+          type: string
+          default: portal
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/dealers/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalDealersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalDealersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalDealersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/disputes/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalDisputesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/fees/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalFeesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalFeesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalFeesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/locations/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalLocationsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalLocationsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalLocationsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/reports/financial:
+    get:
+      tags:
+      - portal
+      operationId: getPortalReportsFinancial
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscribers/export:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscribersExport
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscribers/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscribersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalSubscribersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalSubscribersId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/counts:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscriptionsCounts
+      parameters:
+      - name: primaryGroup
+        in: query
+        schema:
+          type: string
+          default: status
+          enum:
+          - status
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+      - name: appId
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscriptionsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalSubscriptionsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model20'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalSubscriptionsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/vehicles/counts:
+    get:
+      tags:
+      - portal
+      operationId: getPortalVehiclesCounts
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/vehicles/export:
+    get:
+      tags:
+      - portal
+      operationId: getPortalVehiclesExport
+      parameters:
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          default: make
+          enum:
+          - make
+          - model
+          - status
+          - odometer
+          - licensePlateNumber
+          - vin
+      - name: sortDir
+        in: query
+        schema:
+          type: string
+          default: asc
+          enum:
+          - asc
+          - desc
+      - name: dealerId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: locationId
+        in: query
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: class
+        in: query
+        schema:
+          type: string
+      - name: make
+        in: query
+        schema:
+          type: string
+      - name: maintenanceRequired
+        in: query
+        schema:
+          type: boolean
+      - name: recallRequired
+        in: query
+        schema:
+          type: boolean
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/vehicles/{id}:
+    get:
+      tags:
+      - portal
+      operationId: getPortalVehiclesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+      - portal
+      operationId: putPortalVehiclesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/locations/{id}/agreement:
+    get:
+      tags:
+      - portal
+      operationId: getPortalLocationsIdAgreement
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/stripe-connect/{dealerId}/settings:
+    get:
+      tags:
+      - portal
+      operationId: getPortalStripeconnectDealeridSettings
+      parameters:
+      - name: dealerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalStripeconnectDealeridSettings
+      parameters:
+      - name: dealerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/{id}/return:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscriptionsIdReturn
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalSubscriptionsIdReturn
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model9'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+  /portal/subscriptions/{id}/pickup:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscriptionsIdPickup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalSubscriptionsIdPickup
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model15'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+  /portal/vehicles/{id}/telemetry:
+    get:
+      tags:
+      - portal
+      operationId: getPortalVehiclesIdTelemetry
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/{id}/return/fees:
+    get:
+      tags:
+      - portal
+      operationId: getPortalSubscriptionsIdReturnFees
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      - name: odometer
+        in: query
+        required: true
+        schema:
+          type: integer
+          x-constraint:
+            sign: positive
+        x-constraint:
+          sign: positive
+      - name: end
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/agreements:
+    post:
+      tags:
+      - portal
+      operationId: postPortalAgreements
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/auth:
+    post:
+      tags:
+      - portal
+      operationId: postPortalAuth
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalAuth
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/notes:
+    post:
+      tags:
+      - portal
+      operationId: postPortalNotes
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model3'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+  /portal/taxes:
+    post:
+      tags:
+      - portal
+      operationId: postPortalTaxes
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/vin_decode:
+    post:
+      tags:
+      - portal
+      operationId: postPortalVin_decode
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/auth/passwords:
+    put:
+      tags:
+      - portal
+      operationId: putPortalAuthPasswords
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalAuthPasswords
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/bills/{id}/payments:
+    post:
+      tags:
+      - portal
+      operationId: postPortalBillsIdPayments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/stripe-connect/{dealerId}/code:
+    post:
+      tags:
+      - portal
+      operationId: postPortalStripeconnectDealeridCode
+      parameters:
+      - name: dealerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model4'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+  /portal/subscriptions/{id}/recover:
+    put:
+      tags:
+      - portal
+      operationId: putPortalSubscriptionsIdRecover
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+      - portal
+      operationId: postPortalSubscriptionsIdRecover
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalSubscriptionsIdRecover
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/{id}/renew:
+    post:
+      tags:
+      - portal
+      operationId: postPortalSubscriptionsIdRenew
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/{id}/swap:
+    post:
+      tags:
+      - portal
+      operationId: postPortalSubscriptionsIdSwap
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model17'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalSubscriptionsIdSwap
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/transactions/{id}/refunds:
+    post:
+      tags:
+      - portal
+      operationId: postPortalTransactionsIdRefunds
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/documents/{id}:
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalDocumentsId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/images/{id}:
+    put:
+      tags:
+      - portal
+      operationId: putPortalImagesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalImagesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/notes/{id}:
+    delete:
+      tags:
+      - portal
+      operationId: deletePortalNotesId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+  /portal/subscriptions/{id}/vehicle:
+    put:
+      tags:
+      - portal
+      operationId: putPortalSubscriptionsIdVehicle
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          x-format:
+            guid: true
+        x-format:
+          guid: true
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Model21'
+        required: false
+      responses:
+        default:
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                type: string
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    appIds:
+      type: array
+      items:
+        type: string
+    Model1:
+      type: object
+      properties:
+        appIds:
+          $ref: '#/components/schemas/appIds'
+    Model2:
+      required:
+      - id
+      - resource
+      type: object
+      properties:
+        id:
+          type: string
+          x-format:
+            guid: true
+        resource:
+          type: string
+          x-convert:
+            case: lower
+            trim: true
+    references:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model2'
+      x-constraint:
+        single: true
+    Model3:
+      required:
+      - message
+      - references
+      type: object
+      properties:
+        message:
+          type: string
+        references:
+          $ref: '#/components/schemas/references'
+    Model4:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+    Model5:
+      required:
+      - isTaxable
+      - name
+      - taxCode
+      - value
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        value:
+          type: integer
+        taxCode:
+          type: string
+          default: null
+        isTaxable:
+          type: boolean
+    computed:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model5'
+    Model6:
+      type: object
+    misc:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model6'
+    fees:
+      type: object
+      properties:
+        computed:
+          $ref: '#/components/schemas/computed'
+        misc:
+          $ref: '#/components/schemas/misc'
+    return:
+      required:
+      - terms
+      type: object
+      properties:
+        terms:
+          type: string
+        signature:
+          type: string
+    agreement:
+      required:
+      - return
+      type: object
+      properties:
+        return:
+          $ref: '#/components/schemas/return'
+    Model7:
+      type: object
+    inspection:
+      required:
+      - return
+      type: object
+      properties:
+        return:
+          $ref: '#/components/schemas/Model7'
+    Model8:
+      required:
+      - date
+      - odometer
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/Model6'
+        odometer:
+          type: integer
+          x-constraint:
+            sign: positive
+        telemetryUpdatedAt:
+          type: string
+          format: date
+        date:
+          type: string
+          format: date
+    Model9:
+      required:
+      - agreement
+      - duration
+      - end
+      - fees
+      - inspection
+      - return
+      type: object
+      properties:
+        end:
+          type: string
+          format: date
+        duration:
+          minimum: 0
+          type: integer
+        fees:
+          $ref: '#/components/schemas/fees'
+        agreement:
+          $ref: '#/components/schemas/agreement'
+        inspection:
+          $ref: '#/components/schemas/inspection'
+        return:
+          $ref: '#/components/schemas/Model8'
+    pickup:
+      required:
+      - date
+      - odometer
+      type: object
+      properties:
+        odometer:
+          type: integer
+          x-constraint:
+            sign: positive
+        date:
+          type: string
+          format: date
+    type:
+      type: string
+      enum:
+      - state
+    Model10:
+      required:
+      - signature
+      - termHeader
+      - terms
+      - type
+      type: object
+      properties:
+        termHeader:
+          type: string
+        terms:
+          type: string
+        type:
+          $ref: '#/components/schemas/type'
+        signature:
+          type: string
+    additionalAgreements:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model10'
+    Model11:
+      required:
+      - terms
+      type: object
+      properties:
+        terms:
+          type: string
+        signature:
+          type: string
+        additionalAgreements:
+          $ref: '#/components/schemas/additionalAgreements'
+    Model12:
+      required:
+      - pickup
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Model11'
+    Model13:
+      type: object
+    Model14:
+      required:
+      - pickup
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Model13'
+    Model15:
+      required:
+      - agreement
+      - duration
+      - end
+      - inspection
+      - pickup
+      - start
+      type: object
+      properties:
+        start:
+          type: string
+          format: date
+        end:
+          type: string
+          format: date
+        pickup:
+          $ref: '#/components/schemas/pickup'
+        duration:
+          minimum: 0
+          type: integer
+        agreement:
+          $ref: '#/components/schemas/Model12'
+        inspection:
+          $ref: '#/components/schemas/Model14'
+    Model16:
+      required:
+      - date
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+    Model17:
+      required:
+      - pickup
+      - vehicleId
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Model16'
+        vehicleId:
+          type: string
+          x-format:
+            guid: true
+    Model18:
+      required:
+      - reason
+      - status
+      type: object
+      properties:
+        status:
+          type: string
+        reason:
+          type: string
+    Model19:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+    Model20:
+      type: object
+      properties:
+        pickup:
+          $ref: '#/components/schemas/Model19'
+    Model21:
+      required:
+      - vehicle
+      type: object
+      properties:
+        vehicle:
+          type: string
+          x-format:
+            guid: true
